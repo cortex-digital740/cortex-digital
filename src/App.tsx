@@ -24,6 +24,7 @@ import DashboardProjects from "./pages/DashboardProjects";
 import DashboardSettings from "./pages/DashboardSettings";
 
 import NotFound from "./pages/NotFound";
+import { FloatingActionButton } from "@/components/FloatingActionButton";
 
 const queryClient = new QueryClient();
 
