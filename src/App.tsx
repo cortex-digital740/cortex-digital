@@ -66,6 +66,7 @@ const App = () => (
           <Sonner />
           <BrowserRouter>
             <AppRoutes />
+            <FloatingActionButton />
           </BrowserRouter>
         </TooltipProvider>
       </AuthProvider>
