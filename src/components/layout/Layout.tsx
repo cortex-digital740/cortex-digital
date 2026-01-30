@@ -8,20 +8,43 @@ interface LayoutProps {
   showFooter?: boolean;
 }
 
+const layoutVariants = {
+  initial: {
+    opacity: 0,
+    y: 20,
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.4,
+      ease: 'easeOut',
+    },
+  },
+  exit: {
+    opacity: 0,
+    y: -20,
+    transition: {
+      duration: 0.3,
+      ease: 'easeIn',
+    },
+  },
+};
+
 export const Layout = ({ children, showFooter = true }: LayoutProps) => {
   return (
-    <div className="min-h-screen flex flex-col">
+    <motion.div
+      className="min-h-screen flex flex-col"
+      variants={layoutVariants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+    >
       <Navbar />
-      <motion.main
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -20 }}
-        transition={{ duration: 0.3 }}
-        className="flex-1"
-      >
+      <main className="flex-1">
         {children}
-      </motion.main>
+      </main>
       {showFooter && <Footer />}
-    </div>
+    </motion.div>
   );
 };
