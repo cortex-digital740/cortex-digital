@@ -8,6 +8,29 @@ import { useAuth } from '@/contexts/AuthContext';
 import { toast } from '@/hooks/use-toast';
 import logo from '@/assets/logo.png';
 
+const pageVariants = {
+  initial: {
+    opacity: 0,
+    y: 20,
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.4,
+      ease: 'easeOut',
+    },
+  },
+  exit: {
+    opacity: 0,
+    y: -20,
+    transition: {
+      duration: 0.3,
+      ease: 'easeIn',
+    },
+  },
+};
+
 const Register = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -40,7 +63,13 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen flex">
+    <motion.div
+      className="min-h-screen flex"
+      variants={pageVariants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+    >
       {/* Left Side - Form */}
       <div className="flex-1 flex items-center justify-center p-8">
         <motion.div
@@ -142,7 +171,7 @@ const Register = () => {
           </p>
         </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
